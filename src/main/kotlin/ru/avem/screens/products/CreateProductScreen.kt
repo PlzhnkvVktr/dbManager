@@ -13,6 +13,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ru.avem.composables.Header
+import ru.avem.composables.common.SubmitButton
 import ru.avem.composables.common.Textarea
 import ru.avem.viewmodels.products.CreateProductScreenVM
 
@@ -81,9 +82,10 @@ class CreateProductScreen(): Screen {
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Button(onClick = vm::addNews){
-                            Text("Опубликовать")
-                        }
+                        SubmitButton(
+                            text = "Опубликовать",
+                            action = vm::addNews
+                        )
                     }
                 }
             }

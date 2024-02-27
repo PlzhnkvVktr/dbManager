@@ -3,12 +3,15 @@ package ru.avem.screens.news
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.model.rememberScreenModel
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ru.avem.composables.Header
+import ru.avem.composables.common.SubmitButton
 import ru.avem.composables.common.Textarea
 import ru.avem.data.remote.dto.news.NewsResponse
 import ru.avem.viewmodels.news.EditNewsScreenVM
@@ -31,14 +34,21 @@ class EditNewsScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxSize(),
-                    verticalArrangement = Arrangement.SpaceAround
+                    verticalArrangement = Arrangement.SpaceAround,
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
-                    Text("Заголовок")
+                    Text(
+                        text = "Заголовок:",
+                        fontSize = 24.sp
+                    )
                     Textarea(
                         text = vm.title,
                         h = 100
                     )
-                    Text("Текст новости")
+                    Text(
+                        text = "Текст новости:",
+                        fontSize = 24.sp
+                    )
                     Textarea(
                         text = vm.message,
                         h = 700
@@ -48,11 +58,10 @@ class EditNewsScreen(
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Button(
-                            onClick = vm::editNews
-                        ){
-                            Text("Редактировать")
-                        }
+                        SubmitButton(
+                            text = "Редактировать",
+                            action = vm::editNews
+                        )
                     }
                 }
             }

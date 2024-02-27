@@ -24,7 +24,10 @@ fun ItemsScreenBottomBar (
                 .size(100.dp)
                 .padding(20.dp)
         ) {
-            Icon(Icons.Filled.Add, contentDescription = "Добавить")
+            Icon(
+                imageVector = Icons.Filled.Add,
+                contentDescription = "Добавить"
+            )
         }
     }
 }

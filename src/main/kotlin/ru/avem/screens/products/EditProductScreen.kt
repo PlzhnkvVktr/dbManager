@@ -13,6 +13,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ru.avem.composables.Header
+import ru.avem.composables.common.SubmitButton
 import ru.avem.composables.common.Textarea
 import ru.avem.data.remote.dto.product.ProductResponse
 import ru.avem.viewmodels.products.EditProductScreenVM
@@ -84,11 +85,10 @@ class EditProductScreen(
                             .fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center
                     ) {
-                        Button(
-                            onClick = vm::editProduct
-                        ){
-                            Text("Редактировать")
-                        }
+                        SubmitButton(
+                            text = "Редактировать",
+                            action = vm::editProduct
+                        )
                     }
                 }
             }
