@@ -10,6 +10,7 @@ data class ProductResponse(
     val specification: String,
     val additionally: String,
     val category: Int,
+    val subcategory: Int,
     val images: List<String>,
     val id: String
 )

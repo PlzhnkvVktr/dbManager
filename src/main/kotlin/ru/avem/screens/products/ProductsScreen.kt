@@ -7,6 +7,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -18,6 +19,7 @@ import cafe.adriel.voyager.navigator.currentOrThrow
 import ru.avem.composables.ItemsScreenBottomBar
 import ru.avem.composables.Header
 import ru.avem.composables.ItemPanel
+import ru.avem.composables.ProductTopBar
 import ru.avem.viewmodels.products.ProductsScreenVM
 
 class ProductsScreen() : Screen {
@@ -29,7 +31,7 @@ class ProductsScreen() : Screen {
         val vm = rememberScreenModel { ProductsScreenVM() }
 
         LaunchedEffect(Unit) {
-            vm.getNews()
+            vm.getProducts()
         }
 
         Scaffold(
@@ -37,6 +39,7 @@ class ProductsScreen() : Screen {
             topBar = { Header("Список продукции") },
             content = {
                 Column {
+//                    ProductTopBar(vm.categoryList)
                     if (vm.products.value == null) {
                         CircularProgressIndicator(
                             modifier = Modifier

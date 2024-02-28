@@ -13,6 +13,7 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import cafe.adriel.voyager.navigator.currentOrThrow
 import ru.avem.composables.Header
+import ru.avem.composables.common.ComboBox
 import ru.avem.composables.common.SubmitButton
 import ru.avem.composables.common.Textarea
 import ru.avem.viewmodels.products.CreateProductScreenVM
@@ -45,6 +46,24 @@ class CreateProductScreen(): Screen {
                         text = vm.name,
                         h = 100
                     )
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Категория: ${vm.category.value.index}",
+                            modifier = Modifier
+                                .fillMaxWidth(.2f),
+                            fontSize = 24.sp
+                        )
+                        ComboBox(
+                            selectedItem = vm.category,
+                            modifier = Modifier.fillMaxWidth(.8f),
+                            items = vm.categoryList
+                        )
+                    }
                     Text(
                         text = "Описание:",
                         fontSize = 24.sp

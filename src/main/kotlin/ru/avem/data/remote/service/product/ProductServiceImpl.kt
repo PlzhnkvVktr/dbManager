@@ -35,12 +35,32 @@ class ProductServiceImpl(
         }
     }
 
+    override suspend fun getProductsByCategory(category: Int): List<ProductResponse>? {
+        return try {
+            client.get(HttpRoutes.PRODUCTS_CATEGORY).body()
+        } catch(e: RedirectResponseException) {
+            // 3xx - responses
+            println("Error: ${e.response.status.description}")
+            emptyList()
+        } catch(e: ClientRequestException) {
+            // 4xx - responses
+            println("Error: ${e.response.status.description}")
+            emptyList()
+        } catch(e: ServerResponseException) {
+            // 5xx - responses
+            println("Error: ${e.response.status.description}")
+            emptyList()
+        } catch(e: Exception) {
+            println("Error: ${e.message}")
+            emptyList()
+        }
+    }
+
     override suspend fun createProduct(productRequest: ProductRequest) {
-        val response = client.post(HttpRoutes.PRODUCTS) {
+        client.post(HttpRoutes.PRODUCTS) {
             contentType(ContentType.Application.Json)
             setBody(productRequest)
         }
-        println("Status CDSDSDSD: ${response.status}")
     }
 
     override suspend fun deleteProduct(id: String): ProductActionResponse =
