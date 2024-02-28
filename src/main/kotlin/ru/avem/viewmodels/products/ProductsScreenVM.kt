@@ -14,23 +14,21 @@ class ProductsScreenVM : ScreenModel {
 
     private val service = ProductService.create()
     var products = mutableStateOf<List<ProductResponse>?>(null)
+//    val currentCategory = mutableStateOf(1)
 
-    val categoryList = listOf(
-        Category.TEST_EQUIPMENT,
-        Category.AUTOMOTIVE_ELECTROMECHANICS,
-        Category.DEVICES,
-        Category.TRAINING_DEMONSTRATION_STANDS,
-        Category.HYDRAULIC_EQUIPMENT,
-        Category.MEASURING_SYSTEMS,
-        Category.OTHER_EQUIPMENT
-    )
-    suspend fun getProductsByCategory(category: Int = 1) {
-        products.value = service.getProductsByCategory(category)
-    }
+//    suspend fun getProductsByCategory(category: Int = 1) {
+//        products.value = service.getProductsByCategory(category)
+//    }
 
     suspend fun getProducts() {
         products.value = service.getProducts()
     }
+
+//    fun get() {
+//        scope.launch {
+//            getProductsByCategory(currentCategory.value)
+//        }
+//    }
 
     fun deleteNews(id: String) {
         scope.launch {

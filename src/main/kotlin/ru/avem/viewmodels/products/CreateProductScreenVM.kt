@@ -14,16 +14,7 @@ class CreateProductScreenVM(private val navigator: Navigator): ScreenModel {
     private val scope = CoroutineScope(Dispatchers.Default)
     private val service = ProductService.create()
 
-    val categoryList = listOf(
-        Category.TEST_EQUIPMENT,
-        Category.AUTOMOTIVE_ELECTROMECHANICS,
-        Category.DEVICES,
-        Category.TRAINING_DEMONSTRATION_STANDS,
-        Category.HYDRAULIC_EQUIPMENT,
-        Category.MEASURING_SYSTEMS,
-        Category.OTHER_EQUIPMENT
-    )
-    val category = mutableStateOf(categoryList.first())
+    val category = mutableStateOf(Category.values.first())
 
     val name = mutableStateOf("")
     val description = mutableStateOf("")

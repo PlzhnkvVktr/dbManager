@@ -19,16 +19,7 @@ class EditProductScreenVM(
     private val scope = CoroutineScope(Dispatchers.IO)
     private val service = ProductService.create()
 
-    val categoryList = listOf(
-        Category.TEST_EQUIPMENT,
-        Category.AUTOMOTIVE_ELECTROMECHANICS,
-        Category.DEVICES,
-        Category.TRAINING_DEMONSTRATION_STANDS,
-        Category.HYDRAULIC_EQUIPMENT,
-        Category.MEASURING_SYSTEMS,
-        Category.OTHER_EQUIPMENT
-    )
-    val category = mutableStateOf(categoryList.first())
+    val category = mutableStateOf(Category.values.first())
 
     val name = mutableStateOf(productResponse.name)
     val description = mutableStateOf(productResponse.description)

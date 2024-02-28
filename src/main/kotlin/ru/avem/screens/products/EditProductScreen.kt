@@ -17,6 +17,7 @@ import ru.avem.composables.common.ComboBox
 import ru.avem.composables.common.SubmitButton
 import ru.avem.composables.common.Textarea
 import ru.avem.data.remote.dto.product.ProductResponse
+import ru.avem.enums.Category
 import ru.avem.viewmodels.products.EditProductScreenVM
 
 class EditProductScreen(
@@ -64,7 +65,7 @@ class EditProductScreen(
                         ComboBox(
                             selectedItem = vm.category,
                             modifier = Modifier.fillMaxWidth(.8f),
-                            items = vm.categoryList
+                            items = Category.values
                         )
                     }
                     Text(

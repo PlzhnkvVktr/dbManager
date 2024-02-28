@@ -13,6 +13,20 @@ enum class Category (
     MEASURING_SYSTEMS("Измерительные системы", 6),
     OTHER_EQUIPMENT("Другое оборудование", 7);
 
-    override fun toString() = title
+    companion object {
+        val values by lazy {
+            listOf(
+                TEST_EQUIPMENT,
+                AUTOMOTIVE_ELECTROMECHANICS,
+                DEVICES,
+                TRAINING_DEMONSTRATION_STANDS,
+                HYDRAULIC_EQUIPMENT,
+                MEASURING_SYSTEMS,
+                OTHER_EQUIPMENT
+            )
+        }
+    }
+    override fun toString(): String = title
+
 }
 
