@@ -14,7 +14,7 @@ interface ProductService {
 
     suspend fun getProducts(): List<ProductResponse>
 
-    suspend fun getProductsByCategory(category: Int): List<ProductResponse>?
+    suspend fun getProductsByCategory(category: Int): List<ProductResponse>
 
     suspend fun createProduct(productRequest: ProductRequest)
 

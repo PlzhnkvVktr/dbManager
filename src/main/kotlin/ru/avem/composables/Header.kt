@@ -20,7 +20,9 @@ import ru.avem.composables.common.NavButton
 import kotlin.system.exitProcess
 
 @Composable
-fun Header(title: String) {
+fun Header(
+    title: String
+) {
 
     val navigator = LocalNavigator.currentOrThrow
 

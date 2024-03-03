@@ -1,5 +1,6 @@
 package ru.avem.viewmodels.products
 
+import androidx.compose.material.DrawerState
 import androidx.compose.runtime.mutableStateOf
 import cafe.adriel.voyager.core.model.ScreenModel
 import kotlinx.coroutines.CoroutineScope
@@ -11,29 +12,21 @@ import ru.avem.enums.Category
 
 class ProductsScreenVM : ScreenModel {
     private val scope = CoroutineScope(Dispatchers.Default)
+    private val drawerScope = CoroutineScope(Dispatchers.Default)
 
     private val service = ProductService.create()
     var products = mutableStateOf<List<ProductResponse>?>(null)
-//    val currentCategory = mutableStateOf(1)
 
-//    suspend fun getProductsByCategory(category: Int = 1) {
-//        products.value = service.getProductsByCategory(category)
-//    }
-
-    suspend fun getProducts() {
-        products.value = service.getProducts()
+    fun getProductsByCategory() {
+        scope.launch {
+            products.value = service.getProductsByCategory(Category.currentCategoryIndex.value)
+        }
     }
-
-//    fun get() {
-//        scope.launch {
-//            getProductsByCategory(currentCategory.value)
-//        }
-//    }
 
     fun deleteNews(id: String) {
         scope.launch {
             service.deleteProduct(id)
-            getProducts()
+            getProductsByCategory()
         }
     }
 }

@@ -35,9 +35,9 @@ class ProductServiceImpl(
         }
     }
 
-    override suspend fun getProductsByCategory(category: Int): List<ProductResponse>? {
+    override suspend fun getProductsByCategory(category: Int): List<ProductResponse> {
         return try {
-            client.get(HttpRoutes.PRODUCTS_CATEGORY).body()
+            client.get(HttpRoutes.PRODUCTS_CATEGORY + "/$category").body()
         } catch(e: RedirectResponseException) {
             // 3xx - responses
             println("Error: ${e.response.status.description}")
